@@ -1,8 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BaseLayout, App } from './components'
 import './index.css';
-import App from './components/App';
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+ReactDOM.render(
+  <BrowserRouter>
+    <BaseLayout>
+      <Switch>
+        <Route exact path="/" component={ App } />
+      </Switch>
+    </BaseLayout>
+  </BrowserRouter>
+, document.getElementById('root'));
 
