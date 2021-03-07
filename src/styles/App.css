@@ -88,3 +88,10 @@ div.cards-container + .card {
    background: green;
    color: white;
 }
+
+.show-car {
+  background: teal;
+  height: 100vh;
+  color: white;
+  padding: 30px 50px;
+}

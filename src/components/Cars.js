@@ -15,7 +15,7 @@ class Cars extends Component {
      this.setState({
       carsList: cars
      })
-     localStorage.setItem("cars", cars)
+     localStorage.setItem("cars", JSON.stringify(cars))
   }
   render() {
     const { url } = this.props.match;
