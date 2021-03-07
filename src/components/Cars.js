@@ -1,31 +1,36 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { cars } from '../data/'
+import Car from './Car';
 
 class Cars extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cars: []
+      carsList: []
     }
   }
 
   componentDidMount() {
      this.setState({
-       cars: cars
+      carsList: cars
      })
   }
   render() {
     const { url } = this.props.match;
     console.log('cars list>>>>>>', this.state.cars)
+    console.log('url>>>>', url)
     return (
-      <div>
+      <div className="cards-container">
         {
-          this.state.cars.map( (car) => {
+          this.state.carsList.map( (car) => {
             return (
-              <Link to={ `${url}/${car.id}` }>
-              <Car car={car} key={car.id} />
-            </Link>
+              <div key={car.id}>
+                <Link to={ `${url}/${car.id}` }>
+                  <Car car={car}  />
+                </Link>
+              </div>
+              
             )
           })
         }
