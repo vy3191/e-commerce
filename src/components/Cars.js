@@ -15,20 +15,19 @@ class Cars extends Component {
      this.setState({
       carsList: cars
      })
+     localStorage.setItem("cars", cars)
   }
   render() {
     const { url } = this.props.match;
-    console.log('cars list>>>>>>', this.state.cars)
+    console.log('cars list>>>>>>', this.state.carsList)
     console.log('url>>>>', url)
     return (
       <div className="cards-container">
         {
           this.state.carsList.map( (car) => {
             return (
-              <div key={car.id}>
-                <Link to={ `${url}/${car.id}` }>
-                  <Car car={car}  />
-                </Link>
+              <div key={car.id}>        
+                <Car car={car} linkUrl={ `${url}/${car.id}`} />               
               </div>
               
             )

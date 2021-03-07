@@ -65,3 +65,26 @@ div.cards-container a:hover {
 div.cards-container + .card {  
    margin-right: 15px;  
 }
+
+.jumbotron a {
+  background: green;
+  display: inline-block;
+  padding: 12px 16px;
+  margin-top: 30px;
+  color: white;
+}
+
+.jumbotron a:hover {
+  text-decoration: none;
+}
+
+.car-card {
+  margin-top: 25px;
+  text-align: left;
+}
+
+.car-card a button {
+   padding: 5px 12px;
+   background: green;
+   color: white;
+}
