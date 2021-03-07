@@ -1,8 +1,8 @@
- cars = [
+export const cars = [
 {
   year:2013, 
   make: 'Mazda', 
-  model:'CX-5',,
+  model:'CX-5',
   id:1
 },
 {
@@ -34,7 +34,7 @@
   make: 'Porsche',
   model:'Boxster',
   id: 6
-}
+},
 {
   year:2013, 
   make: 'Porsche',
@@ -104,6 +104,3 @@
 }
 ]
 
-module.export = {
-  cars
-}
