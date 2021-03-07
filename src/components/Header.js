@@ -4,33 +4,40 @@ import { NavLink } from 'react-router-dom';
 class Header extends Component {
   render() {
     return (
-      <nav className="navbar navbar-default">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <NavLink  
-              activeClassName="selected"
-              className="navbar-brand"
-            >CAR SALES
-            </NavLink>
-          </div>
-          <ul className="nav navbar-nav">
-            <li>
-              <NavLink  
-                activeClassName="selected"
-                className="navbar-brand"
-              >About
-              </NavLink>
-            </li>
-            <li>
-              <NavLink  
-                activeClassName="selected"
-                className="navbar-brand"
-              >Contact Us
-              </NavLink>
-            </li>
-          </ul>
+      <nav className="navbar navbar-inverse" style={{backgroundColor: '#4CAF50', color: 'white'}}>
+      <div className="container-fluid px-5">
+        <div className="navbar-header">
+          <NavLink 
+            to="/"
+            className="navbar-brand"
+            style={{color: 'white'}}
+          >
+            Car Sales
+          </NavLink>
         </div>
-      </nav>
+        <ul className="nav navbar-nav navbar-right">
+          <li>
+            <NavLink 
+              to="/about"
+              className="navbar-brand"
+              style={{color: 'white'}}
+            >
+              About
+            </NavLink>
+          </li>
+          <li>
+            <NavLink 
+              to="/contact"
+              className="navbar-brand"
+              style={{color: 'white'}}
+            >
+              Contact Us
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+    </nav>
+      
     );
   }
 }

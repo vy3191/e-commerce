@@ -6,7 +6,7 @@ class App extends Component {
     return (
       <div className="container">
         <div className="jumbotron">
-          <h1>USED CAR SALES IN YOUR TOWN</h1>
+          <h1>USED CAR SALES</h1>
           <h2>Find a Great Price on the Vehicle You Want.</h2>
         </div>
       </div>
