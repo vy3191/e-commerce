@@ -9,7 +9,8 @@ class ShowCar extends Component {
     super(props);
     this.state = {
       features: [],
-      addedFeatures: []
+      addedFeatures: [],
+      total: 0
     }
     this.addFeatures = this.addFeatures.bind(this);
     this.removeFeature = this.removeFeature.bind(this);
@@ -17,7 +18,8 @@ class ShowCar extends Component {
 
   addFeatures(feature) {
     this.setState({
-      addedFeatures: [...this.state.addedFeatures, feature]
+      addedFeatures: [...this.state.addedFeatures, feature],
+      total: this.state.total + Number(feature.price)
     })
   }
 
@@ -25,9 +27,12 @@ class ShowCar extends Component {
     const filteredFeatures = this.state.addedFeatures.filter( feature => feature.id !== item.id)
     console.log('filtered feature items>>>>>>>>', item)
     this.setState( {
-      addedFeatures: [ ...filteredFeatures ]
+      addedFeatures: [ ...filteredFeatures ],
+      total: this.state.total - Number(item.price)
     })
   }
+
+  
 
   componentDidMount() {
     this.setState({
@@ -39,8 +44,8 @@ class ShowCar extends Component {
     const { id } = this.props.match.params;
     const storedCars = JSON.parse(localStorage.getItem("cars")) || [];
     const car = storedCars.length > 0 && storedCars.filter( car => +(car.id) === +(id))[0];
-    const { addedFeatures } = this.state;
-    console.table({ addedFeatures })
+    const { addedFeatures, total } = this.state;
+    console.table({ state: this.state })
     return (
       <div className="container-flex">
         <div className="additional-feature">
@@ -52,6 +57,7 @@ class ShowCar extends Component {
                   key={item.id} 
                   feature={item} 
                   add={ this.addFeatures }
+                  addPrice={ this.addPrice }
                 />
               )
             })
@@ -74,6 +80,7 @@ class ShowCar extends Component {
               <p>Model: {car.model}</p>
               <p>Year: {car.year}</p>
               <p>Base price: {car.price}</p>
+              <p className="total-price">Total Price: ${ car.price + total }</p>
             </div>
           </div> 
           <div className="purchased-features">
