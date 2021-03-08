@@ -9,7 +9,7 @@ class ShowCar extends Component {
     super(props);
     this.state = {
       features: [],
-      addedFeatures: [],
+      addedFeatures: {},
       total: 0
     }
     this.addFeatures = this.addFeatures.bind(this);
@@ -17,9 +17,16 @@ class ShowCar extends Component {
   }
 
   addFeatures(feature) {
+    const { addedFeatures, total } = this.state;
+    let updatedTotal = total;
+    if ( !addedFeatures[feature.id]) {
+      addedFeatures[feature.id] = feature
+      updatedTotal += Number(feature.price)
+    }
+  
     this.setState({
-      addedFeatures: [...this.state.addedFeatures, feature],
-      total: this.state.total + Number(feature.price)
+      addedFeatures,
+      total: updatedTotal
     })
   }
 
@@ -85,10 +92,10 @@ class ShowCar extends Component {
           </div> 
           <div className="purchased-features">
            {
-             addedFeatures.length > 0 ? 
+             Object.keys(addedFeatures).length > 0 ? 
              (
                <div>
-                 {addedFeatures.map( item => (
+                 {Object.values(addedFeatures).map( item => (
                    <PurchasedItem 
                     item={ item } 
                     key={item.id} 

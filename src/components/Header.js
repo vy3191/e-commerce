@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 class Header extends Component {
   render() {
     return (
-      <nav className="navbar navbar-inverse" style={{backgroundColor: '#E01E5A', color: 'white'}}>
+      <nav className="navbar navbar-inverse" style={{backgroundColor: '#3C4089', color: 'white'}}>
       <div className="container-fluid px-5">
         <div className="navbar-header">
           <NavLink 
