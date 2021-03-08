@@ -31,10 +31,17 @@ class ShowCar extends Component {
   }
 
   removeFeature(item) {
-    const filteredFeatures = this.state.addedFeatures.filter( feature => feature.id !== item.id)
-    console.log('filtered feature items>>>>>>>>', item)
+    console.log('added features>>>>>', this.state.addedFeatures)
+    const { addedFeatures } = this.state;
+    const { [item.id]: deletedFeature, ...rest} = addedFeatures;
+    deletedFeature && delete addedFeatures[item.id]
+    
+    console.log('added features', addedFeatures)
+    // const filteredFeatures = this.state.addedFeatures.filter( feature => feature.id !== item.id)
+    console.log('deleted feature items>>>>>>>>', deletedFeature)
+    console.log('rest of features>>>', rest)
     this.setState( {
-      addedFeatures: [ ...filteredFeatures ],
+      addedFeatures: { ...addedFeatures },
       total: this.state.total - Number(item.price)
     })
   }
@@ -52,7 +59,7 @@ class ShowCar extends Component {
     const storedCars = JSON.parse(localStorage.getItem("cars")) || [];
     const car = storedCars.length > 0 && storedCars.filter( car => +(car.id) === +(id))[0];
     const { addedFeatures, total } = this.state;
-    console.table({ state: this.state })
+    // console.table({ state: this.state })
     return (
       <div className="container-flex">
         <div className="additional-feature">
