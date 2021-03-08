@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { additionalFeatures } from '../data'
 import Feature from './Feature';
+import PurchasedItem from './PurchasedItem';
+import { additionalFeatures } from '../data'
 import MovingCar from '../styles/images/moving-car.gif'
 class ShowCar extends Component {
   constructor(props) {
@@ -10,11 +11,21 @@ class ShowCar extends Component {
       features: [],
       addedFeatures: []
     }
+    this.addFeatures = this.addFeatures.bind(this);
+    this.removeFeature = this.removeFeature.bind(this);
   }
 
-  handleFeatures(feature) {
+  addFeatures(feature) {
     this.setState({
-      additionalFeatures: [...this.state.addedFeatures, feature]
+      addedFeatures: [...this.state.addedFeatures, feature]
+    })
+  }
+
+  removeFeature(item) {
+    const filteredFeatures = this.state.addedFeatures.filter( feature => feature.id !== item.id)
+    console.log('filtered feature items>>>>>>>>', item)
+    this.setState( {
+      addedFeatures: [ ...filteredFeatures ]
     })
   }
 
@@ -26,12 +37,10 @@ class ShowCar extends Component {
   }
   render() {
     const { id } = this.props.match.params;
-    console.log('id>>>>>', id)
     const storedCars = JSON.parse(localStorage.getItem("cars")) || [];
-    console.log('stored cars>>>>>>', storedCars)
     const car = storedCars.length > 0 && storedCars.filter( car => +(car.id) === +(id))[0];
-    console.log('stored car>>xxxx>>>', car)
-    console.log('car>>>', car)
+    const { addedFeatures } = this.state;
+    console.table({ addedFeatures })
     return (
       <div className="container-flex">
         <div className="additional-feature">
@@ -39,7 +48,11 @@ class ShowCar extends Component {
           {
             this.state.features.map((item) => {
               return(
-                <Feature feature={item} key={item.id} />
+                <Feature 
+                  key={item.id} 
+                  feature={item} 
+                  add={ this.addFeatures }
+                />
               )
             })
           }
@@ -64,11 +77,23 @@ class ShowCar extends Component {
             </div>
           </div> 
           <div className="purchased-features">
-            {
-              this.state.addedFeatures.length ===0 ? 
-              <p>Please purchase items form in house store.</p> :
-              null               
-            }
+           {
+             addedFeatures.length > 0 ? 
+             (
+               <div>
+                 {addedFeatures.map( item => (
+                   <PurchasedItem 
+                    item={ item } 
+                    key={item.id} 
+                    remove={ this.removeFeature }
+                  />
+                 ))}
+               </div>
+             ) :
+             (
+               <p>You can purchase items from in the in-house store.</p>
+             )
+           }       
 
           </div>      
         </div>
