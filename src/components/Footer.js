@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="bg-light text-center text-lg-start">
       <div className="footer">
-        © 2020 Copyright:
+       Venky © 2020 Copyright:
       </div>
     </footer>
   )
