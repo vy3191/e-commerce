@@ -7,8 +7,15 @@ class ShowCar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      features: []
+      features: [],
+      addedFeatures: []
     }
+  }
+
+  handleFeatures(feature) {
+    this.setState({
+      additionalFeatures: [...this.state.addedFeatures, feature]
+    })
   }
 
   componentDidMount() {
@@ -55,7 +62,15 @@ class ShowCar extends Component {
               <p>Year: {car.year}</p>
               <p>Base price: {car.price}</p>
             </div>
-          </div>       
+          </div> 
+          <div className="purchased-features">
+            {
+              this.state.addedFeatures.length ===0 ? 
+              <p>Please add additional features if you want..</p> :
+              null               
+            }
+
+          </div>      
         </div>
       </div>
     );

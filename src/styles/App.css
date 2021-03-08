@@ -90,6 +90,7 @@ div.cards-container + .card {
 }
 
 .show-car {
+  display: flex;
   background: teal;
   height: 680px;;
   color: white;
@@ -97,14 +98,26 @@ div.cards-container + .card {
   margin-top: 40px;
 }
 
+.basic-feature {
+  margin-right: 30px;
+}
+
+.purchased-features {
+   margin-top: 100px;
+   padding: 30px 50px;
+   font-size: 16px;
+}
+
 .container-flex {
   display: flex;
+  justify-content: space-around;
 }
 
 .additional-feature {
   padding: 30px 50px;
   background:#36C5F0;
   margin-top: 40px;
+  margin-left: 160px;
 }
 
 div.feature {
