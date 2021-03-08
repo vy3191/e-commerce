@@ -57,7 +57,7 @@ class ShowCar extends Component {
             </p>
             <h1>{car.make} details</h1>
             <img src={ MovingCar } alt="moving-car" width="auto" height="250" />
-            <div>
+            <div className="basic-details">
               <p>Model: {car.model}</p>
               <p>Year: {car.year}</p>
               <p>Base price: {car.price}</p>
@@ -66,7 +66,7 @@ class ShowCar extends Component {
           <div className="purchased-features">
             {
               this.state.addedFeatures.length ===0 ? 
-              <p>Please add additional features if you want..</p> :
+              <p>Please purchase items form in house store.</p> :
               null               
             }
 
