@@ -91,7 +91,33 @@ div.cards-container + .card {
 
 .show-car {
   background: teal;
-  height: 100vh;
+  height: 680px;;
   color: white;
   padding: 30px 50px;
+  margin-top: 40px;
+}
+
+.container-flex {
+  display: flex;
+}
+
+.additional-feature {
+  padding: 30px 50px;
+  background:#36C5F0;
+  margin-top: 40px;
+}
+
+div.feature {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+div.feature button {
+  background: #EBB424;
+  padding: 3px 7px;
+  margin-right: 12px;
+  color: black;
 }

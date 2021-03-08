@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { additionalFeatures } from '../data'
+import Feature from './Feature';
 import MovingCar from '../styles/images/moving-car.gif'
 class ShowCar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      features: []
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      features: additionalFeatures
+    })
+    localStorage.setItem('features', JSON.stringify(additionalFeatures))
+  }
   render() {
     const { id } = this.props.match.params;
     console.log('id>>>>>', id)
@@ -10,10 +26,37 @@ class ShowCar extends Component {
     console.log('stored car>>xxxx>>>', car)
     console.log('car>>>', car)
     return (
-      <div className="container show-car">
-        <p>You have chose the following car to purchase. You can add an additional features to it.</p>
-        <h1>{car.make} details</h1>
-        <img src={ MovingCar } alt="moving-car" width="auto" height="300" />
+      <div className="container-flex">
+        <div className="additional-feature">
+          <h2>Customize Details</h2>
+          {
+            this.state.features.map((item) => {
+              return(
+                <Feature feature={item} key={item.id} />
+              )
+            })
+          }
+        </div>      
+        <div className="container show-car">
+          <div className="basic-feature">
+            <p>
+              <Link to="/cars">
+                <button 
+                  className="btn btn-info"
+                >
+                Previous page
+                </button>
+              </Link>
+            </p>
+            <h1>{car.make} details</h1>
+            <img src={ MovingCar } alt="moving-car" width="auto" height="250" />
+            <div>
+              <p>Model: {car.model}</p>
+              <p>Year: {car.year}</p>
+              <p>Base price: {car.price}</p>
+            </div>
+          </div>       
+        </div>
       </div>
     );
   }
