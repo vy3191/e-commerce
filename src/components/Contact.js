@@ -43,7 +43,7 @@ class Contact extends Component {
     const isValid = !firstName || !lastName || !email || !subject;
     console.log('state>>', this.state)
     return (
-        <div className="container">
+        <div className="container contact-us">
           <h1 className="text-center">Contact Details</h1>
           <form onSubmit={ this.handleSubmit }>
             <label htmlFor="fname">First Name</label>
@@ -83,7 +83,7 @@ class Contact extends Component {
               style={{height:"200px"}} />
             <div className="submit">
                <button 
-                disabled={ isValid }
+              disabled={ isValid }
                className="btn btn-lg btn-success"
               >
                 Submit
