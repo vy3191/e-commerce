@@ -7,7 +7,7 @@ function BaseLayout({children}) {
   return (
     <div>
       <Header />
-      {/* <Checkout /> */}
+      <Checkout />
         <div className="main-content">
            { children }
         </div>

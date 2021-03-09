@@ -13,12 +13,13 @@ class Checkout extends Component {
         <li>
           <Link to="/additional-features">Additional Features</Link>
         </li>
-        <li>
-          <Link to="/additional-features">
-            <img src={ checkout } alt="checkout" height={40} width={40} />
-          </Link>
-        </li>
         </ul>
+        <div className="text-right my-5">
+          <Link 
+            to="/additional-features">
+            <img src={ checkout } alt="checkout" height={42} width={42} />
+          </Link>
+        </div>
       </div>
     );
   }
