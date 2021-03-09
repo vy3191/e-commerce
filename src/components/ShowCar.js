@@ -108,11 +108,22 @@ class ShowCar extends Component {
                     key={item.id} 
                     remove={ this.removeFeature }
                   />
-                 ))}
+                 ))}                 
+                <div className="proceed-to-cart">
+                 { Object.values(addedFeatures).length > 2 ?
+                 ( <div className="add-to-cart text-center"> 
+                    Add to cart
+                  </div>) :
+                  null
+                  }
+                </div>                 
                </div>
              ) :
              (
-               <p>You can purchase items from in the in-house store.</p>
+               <div>
+                <p className="m-b-0">You can purchase items from in the in-house store.</p>
+                <p className="text-center text-uppercase instructions">(Add at least three items.)</p>
+               </div>
              )
            }       
 

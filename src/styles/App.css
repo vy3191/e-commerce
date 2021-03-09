@@ -107,6 +107,7 @@ div.cards-container + .card {
    padding: 30px 50px;
    font-size: 22px;
    border-left: 1px solid goldenrod;
+   position: relative;
 }
 
 .container-flex {
@@ -185,4 +186,26 @@ div.submit {
 
 nav.navbar {
   margin-bottom: 0px;
+}
+
+/* checkout instructions */
+.instructions {
+  margin-top: -10px;
+  font-size: 12px;
+  font-weight: bold;
+  color: gold;
+
+}
+
+.proceed-to-cart {
+   position: absolute;
+   bottom: 50px;
+   left: 20%;
+}
+
+.add-to-cart {
+  padding: 7px 30px;
+  background: skyblue;
+  color: black;
+  cursor: pointer;
 }
