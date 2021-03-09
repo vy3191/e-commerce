@@ -6,7 +6,6 @@ class Car extends Component {
   
   render() {
     const { car, linkUrl } = this.props;
-    console.log('propssss>>>>', this.props)
     return (
       <div className="card">
         {/* <img src="img_avatar.png" alt="Avatar" style="width:100%" /> */}

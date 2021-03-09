@@ -12,8 +12,10 @@ class ShowCar extends Component {
       addedFeatures: {},
       total: 0
     }
+
     this.addFeatures = this.addFeatures.bind(this);
     this.removeFeature = this.removeFeature.bind(this);
+    this.handleCart = this.handleCart.bind(this);
   }
 
   addFeatures(feature) {
@@ -45,8 +47,16 @@ class ShowCar extends Component {
       total: this.state.total - Number(item.price)
     })
   }
-
   
+  handleCart(car) {
+    console.log('purchased car>>>>>>>>>>>>>',car)
+    const purchasedCars = JSON.parse(localStorage.getItem('purchased-cars') || '[]');
+    console.log('purchased cars>>>', purchasedCars)
+    purchasedCars.push(car);
+    localStorage.setItem('purchased-cars', JSON.stringify(purchasedCars));
+    this.props.history.push("/cars")
+
+  }
 
   componentDidMount() {
     this.setState({
@@ -59,7 +69,6 @@ class ShowCar extends Component {
     const storedCars = JSON.parse(localStorage.getItem("cars")) || [];
     const car = storedCars.length > 0 && storedCars.filter( car => +(car.id) === +(id))[0];
     const { addedFeatures, total } = this.state;
-    // console.table({ state: this.state })
     return (
       <div className="container-flex">
         <div className="additional-feature">
@@ -111,7 +120,10 @@ class ShowCar extends Component {
                  ))}                 
                 <div className="proceed-to-cart">
                  { Object.values(addedFeatures).length > 2 ?
-                 ( <div className="add-to-cart text-center"> 
+                 ( <div 
+                    className="add-to-cart text-center"
+                    onClick={ () => this.handleCart(id) }
+                  > 
                     Add to cart
                   </div>) :
                   null

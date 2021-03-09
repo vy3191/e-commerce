@@ -19,8 +19,6 @@ class Cars extends Component {
   }
   render() {
     const { url } = this.props.match;
-    console.log('cars list>>>>>>', this.state.carsList)
-    console.log('url>>>>', url)
     return (
       <div className="cards-container">
         {
