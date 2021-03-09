@@ -6,7 +6,7 @@ class Checkout extends Component {
   constructor(props) {
     super(props);
     this.state ={
-      cartItems: 0 || JSON.parse(localStorage.getItem('purchased-cars'))
+      cartItems: 0 || JSON.parse(localStorage.getItem('purchased-cars')).length
     }
   }
   
@@ -22,10 +22,10 @@ class Checkout extends Component {
         </li>
         </ul>
         <div className="text-right my-5">
-          <span class="cart-items">{this.state.cartItems}</span>
           <Link 
-            to="/additional-features">
+            to="/proceed-to-payment">
             <img src={ checkout } alt="checkout" height={42} width={42} />
+            <span class="cart-items">{this.state.cartItems}</span>
           </Link>
         </div>
       </div>
