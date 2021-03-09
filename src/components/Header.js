@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import CarLogo from '../styles/images/car-logo.png'
 
 class Header extends Component {
   render() {
@@ -12,7 +13,7 @@ class Header extends Component {
             className="navbar-brand"
             style={{color: 'white'}}
           >
-            Car Sales
+            <img src={ CarLogo } alt="logo" width={32} height={30} />
           </NavLink>
         </div>
         <ul className="nav navbar-nav navbar-right">
