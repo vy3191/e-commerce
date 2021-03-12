@@ -6,8 +6,15 @@ class Checkout extends Component {
   constructor(props) {
     super(props);
     this.state ={
-      cartItems: 0 || JSON.parse(localStorage.getItem('purchased-cars')).length
+      cartItems: 0
     }
+  }
+
+  componentDidMount() {
+    const purchasedItems = JSON.parse(localStorage.getItem('purchased-cars')) || []
+    this.setState({
+      cartItems: purchasedItems.length
+    })
   }
   
   render() {
