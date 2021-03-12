@@ -33,29 +33,20 @@ class ShowCar extends Component {
   }
 
   removeFeature(item) {
-    console.log('added features>>>>>', this.state.addedFeatures)
     const { addedFeatures } = this.state;
-    const { [item.id]: deletedFeature, ...rest} = addedFeatures;
-    deletedFeature && delete addedFeatures[item.id]
-    
-    console.log('added features', addedFeatures)
-    // const filteredFeatures = this.state.addedFeatures.filter( feature => feature.id !== item.id)
-    console.log('deleted feature items>>>>>>>>', deletedFeature)
-    console.log('rest of features>>>', rest)
+    const { [item.id]: deletedFeature, ...rest} = addedFeatures; 
+   
     this.setState( {
-      addedFeatures: { ...addedFeatures },
+      addedFeatures: { ...rest },
       total: this.state.total - Number(item.price)
     })
   }
   
   handleCart(car) {
-    console.log('purchased car>>>>>>>>>>>>>',car)
     const purchasedCars = JSON.parse(localStorage.getItem('purchased-cars') || '[]');
-    console.log('purchased cars>>>', purchasedCars)
     purchasedCars.push(car);
     localStorage.setItem('purchased-cars', JSON.stringify(purchasedCars));
     this.props.history.push("/cars")
-
   }
 
   componentDidMount() {
@@ -65,10 +56,12 @@ class ShowCar extends Component {
     localStorage.setItem('features', JSON.stringify(additionalFeatures))
   }
   render() {
+    
     const { id } = this.props.match.params;
     const storedCars = JSON.parse(localStorage.getItem("cars")) || [];
     const car = storedCars.length > 0 && storedCars.filter( car => +(car.id) === +(id))[0];
     const { addedFeatures, total } = this.state;
+  
     return (
       <div className="container-flex">
         <div className="additional-feature">
