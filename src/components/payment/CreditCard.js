@@ -47,17 +47,18 @@ function CreditCard() {
         name="cvv" 
         placeholder="Enter cvv number" 
       />     
+     <div>
       <label>
-      <input 
-        type="checkbox" 
-        checked="checked" 
-        name="sameAdr"
-      />Shipping address same as billing
-      </label>
-      <input 
-        type="submit" 
-        value="Continue to checkout" className="btn" 
-      />
+        <input 
+          type="checkbox" 
+          checked="checked" 
+          name="sameAdr"
+        />Shipping address same as billing
+        </label>
+     </div>
+     <div>
+        <button className="btn btn-primary btn-sm">Continue to checkout</button>
+     </div>
     </div>   
   )
 }
