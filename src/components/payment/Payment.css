@@ -1,0 +1,15 @@
+
+.payment {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.address {
+  width: 50%;
+}
+
+.credit-card {
+  width: 40%;
+}

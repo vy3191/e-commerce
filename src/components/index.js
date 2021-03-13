@@ -6,4 +6,4 @@ export { default as BaseLayout } from './Layout';
 export { default as Cars } from './Cars';
 export { default as ShowCar } from './ShowCar';
 export { default as Checkout } from './Checkout';
-export { default as Payment } from './Payment';
+export { default as Payment } from './payment/Payment';

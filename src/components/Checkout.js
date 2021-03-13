@@ -16,6 +16,8 @@ class Checkout extends Component {
       cartItems: purchasedItems.length
     })
   }
+
+  
   
   render() {
     return (
